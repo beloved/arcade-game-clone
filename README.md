@@ -1,6 +1,17 @@
-frontend-nanodegree-arcade-game
-===============================
+Installation:
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+Download the repository:
+Click download ZIP on the right of the screen, then extract the zip file to your computer, or clone the repository using git.
+Navigate to where you unzipped the file or cloned the repository.
+Double-click index.html to open the game in your browser.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Or Play Online:
+
+https://beloved.github.io/arcade-game-clone/
+
+How To Play:
+
+Use the arrow keys to move the player.
+The objective of the game is to reach the top of the water without getting hit by a bug, each time you reach the top your level will increase.
+You will only have three lives, each time a bug hits your player you will lose a life.
+The game is over when all your lives have been used.
