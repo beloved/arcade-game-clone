@@ -16,11 +16,14 @@ Enemy.prototype.update = function(dt) {
         this.speed = this.speed = Math.floor(Math.random() * 250) + 150;
     }
     //Handles collision with enemy - code adapted from http://www.gaminglogy.com/tutorial/collision-detection/
-        if ((this.x <= player.x && this.x + 100 >= player.x) &&
-            (this.y <= player.y && this.y + 85 >= player.y)) {
+        if ((this.x <= player.x && this.x + 75 >= player.x) &&
+            (this.y <= player.y && this.y + 80 >= player.y)) {
             player.reset();
+            player.life -= 1;
+            player.lives();
         }
 };
+
 
 // Draw the enemy on the screen
 Enemy.prototype.render = function() {
@@ -30,14 +33,21 @@ Enemy.prototype.render = function() {
 // Create player class
 let Player = function(x, y) {
     this.sprite = 'images/char-princess-girl.png';
+    this.level = 1;
+    this.life = 3;
     this.x = x;
     this.y = y;
 };
 
 // Player reaches the water, reset player
+
+// let level = 1;
 Player.prototype.update = function() {
     if (this.y === -25) {
-        player.reset();
+       this.reset();
+       this.level += 1;
+       this.showLevel = document.querySelector('.level');
+       this.showLevel.innerHTML = this.level;
     }
 };
 
@@ -66,6 +76,34 @@ Player.prototype.reset = function () {
     this.y = 400;
 };
 
+Player.prototype.lives = function() {
+    this.hearts = document.getElementsByClassName('heart');
+    if (player.life === 2) {
+        this.hearts[2].style.visibility ='hidden';
+    }
+    if (player.life === 1) {
+        this.hearts[1].style.visibility ='hidden';
+    }
+    if (player.life === 0) {
+        this.hearts[0].style.visibility = 'hidden';
+        this.endGame = document.querySelector('.lives');
+        this.endGame.innerHTML = `Game Over`;
+        player.gameOver();
+        console.log('Game over');
+    }
+};
+
+Player.prototype.gameOver = function() {
+    this.modal = document.getElementById('gameOver');
+    this.span = document.getElementsByClassName("modal-close")[0];
+
+
+        this.modal.style.visibility='visible';
+        this.span.onclick = function() {
+            modal.style.visibility= 'hidden';
+        }
+
+};
 // instantiate Enemy and Player objects with starting positions.
 let allEnemies = [];
 let enemy1 = new Enemy(0,60);
