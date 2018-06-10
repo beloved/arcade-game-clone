@@ -88,22 +88,9 @@ Player.prototype.lives = function() {
         this.hearts[0].style.visibility = 'hidden';
         this.endGame = document.querySelector('.lives');
         this.endGame.innerHTML = `Game Over`;
-        player.gameOver();
-        console.log('Game over');
     }
 };
 
-Player.prototype.gameOver = function() {
-    this.modal = document.getElementById('gameOver');
-    this.span = document.getElementsByClassName("modal-close")[0];
-
-
-        this.modal.style.visibility='visible';
-        this.span.onclick = function() {
-            modal.style.visibility= 'hidden';
-        }
-
-};
 // instantiate Enemy and Player objects with starting positions.
 let allEnemies = [];
 let enemy1 = new Enemy(0,60);
