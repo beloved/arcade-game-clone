@@ -1,4 +1,5 @@
-// Enemies our player must avoid
+'use strict';
+// / Enemies our player must avoid
 let Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
@@ -15,13 +16,20 @@ Enemy.prototype.update = function(dt) {
         //Following line setting speed was developed by researching the Udacity Discussion Forums
         this.speed = this.speed = Math.floor(Math.random() * 250) + 150;
     }
-    //Handles collision with enemy - code adapted from http://www.gaminglogy.com/tutorial/collision-detection/
-        if ((this.x <= player.x && this.x + 75 >= player.x) &&
-            (this.y <= player.y && this.y + 80 >= player.y)) {
-            player.reset();
-            player.life -= 1;
-            player.lives();
-        }
+   // Handles collision with enemy - code adapted from http://www.gaminglogy.com/tutorial/collision-detection/
+   //      if (this.x <= player.x && this.x + 75 >= player.x &&
+   //          this.y <= player.y && this.y + 80 >= player.y) {
+   //          player.reset();
+   //          player.life -= 1;
+   //          player.lives();
+   //      }
+
+         if (this.x < player.x + 50 && this.x + 75 > player.x &&
+             this.y < player.y + 50 && this.y + 80 > player.y) {
+             player.reset();
+             player.life -= 1;
+             player.lives();
+         }
 };
 
 
@@ -88,6 +96,7 @@ Player.prototype.lives = function() {
         this.hearts[0].style.visibility = 'hidden';
         this.endGame = document.querySelector('.lives');
         this.endGame.innerHTML = `Game Over`;
+        allEnemies.pause();
     }
 };
 
